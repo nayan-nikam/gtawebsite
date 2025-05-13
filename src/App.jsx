@@ -38,57 +38,49 @@ function App() {
       rotate: 0,
       scale: 1,
       duration: 2,
-      delay:-1,
-      ease: "Expo.easeInOut"
-    })
+      delay: -1,
+      ease: "Expo.easeInOut",
+    });
 
     gsap.to(".sky", {
       rotate: 0,
       scale: 1.2,
       duration: 2,
-      delay:-.8,
-      ease: "Expo.easeInOut"
-    })
+      delay: -0.8,
+      ease: "Expo.easeInOut",
+    });
 
     gsap.to(".bg", {
       rotate: 0,
       scale: 1.2,
       duration: 2,
-      delay:-.8,
-      ease: "Expo.easeInOut"
-    })
+      delay: -0.8,
+      ease: "Expo.easeInOut",
+    });
 
     gsap.to(".character", {
       rotate: 0,
       scale: 0.7,
-      x:"-50%",
-      bottom:"-62.5%",
+      x: "-50%",
+      bottom: "-62.5%",
       duration: 2,
-      delay:-.8,
-      ease: "Expo.easeInOut"
-    })
+      delay: -0.8,
+      ease: "Expo.easeInOut",
+    });
 
     const main = document.querySelector(".main");
-
     main?.addEventListener("mousemove", function (e) {
       const xMove = (e.clientX / window.innerWidth - 0.5) * 40;
-      gsap.to(".imagediv .text", {
-        x: `${xMove * 0.4}%`,
-      });
-
-      gsap.to(".sky", {
-        x: xMove,
-      });
-
-      gsap.to(".bg", {
-        x: xMove,
-      });
+      gsap.to(".imagediv .text", { x: `${xMove * 0.4}%` });
+      gsap.to(".sky", { x: xMove });
+      gsap.to(".bg", { x: xMove });
     });
   }, [showContent]);
 
   return (
     <>
-      <div className="flex items-center justify-center fixed svg top-0 left-0 z-[100] w-full h-screen overflow-hidden bg-[#000]">
+      <div className="fixed top-0 left-0 z-50 w-full h-screen bg-black svg flex items-center justify-center overflow-hidden">
+        {/* Splash Mask */}
         <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
           <defs>
             <mask id="viMask">
@@ -99,9 +91,9 @@ function App() {
                   y="50%"
                   textAnchor="middle"
                   dominantBaseline="middle"
-                  fontSize="250"
+                  className="text-[180px] sm:text-[220px] md:text-[250px]"
                   fill="white"
-                  fontFamily="Arial Black"
+                  style={{ fontFamily: 'Arial Black' }}
                 >
                   VI
                 </text>
@@ -117,83 +109,88 @@ function App() {
           />
         </svg>
       </div>
-      {showContent && (
-        <div className="main w-full overflow-hidden rotate-[-10deg] scale-[1.7]">
-          <div className="landing overflow-hidden relative w-full h-screen bg-black">
-            <div className="navbar absolute top-0 left-0 z-[10] w-full py-10 px-10">
-              <div className="logo flex gap-6 items-center">
-                <div className="lines flex flex-col gap-1">
-                  <div className="line w-10 h-1 bg-white"></div>
-                  <div className="line w-8 h-1 bg-white"></div>
-                  <div className="line w-5 h-1 bg-white"></div>
-                </div>
-                <h3 className="text-2xl text-white">Rockstar</h3>
-              </div>
-            </div>
 
-            <div className="imagediv relative overflow-hidden w-full h-screen">
+      {showContent && (
+        <div className="main w-full h-full overflow-hidden rotate-[-10deg] scale-[1.7] sm:rotate-[-8deg] sm:scale-[1.5] md:rotate-[-5deg] md:scale-[1] transition-all duration-500">
+          {/* Landing Section */}
+          <section className="landing relative w-full h-screen bg-black overflow-hidden">
+            <nav className="navbar absolute top-0 left-0 w-full py-6 px-4 sm:py-8 sm:px-8 md:py-10 md:px-10 z-20">
+              <div className="logo flex items-center gap-4 sm:gap-5 md:gap-6">
+                <div className="lines flex flex-col gap-1">
+                  <div className="line w-6 h-0.5 sm:w-8 md:w-10 bg-white"></div>
+                  <div className="line w-5 h-0.5 sm:w-7 md:w-8 bg-white"></div>
+                  <div className="line w-4 h-0.5 sm:w-5 md:w-5 bg-white"></div>
+                </div>
+                <h3 className="text-lg sm:text-xl md:text-2xl text-white">Rockstar</h3>
+              </div>
+            </nav>
+
+            <div className="imagediv relative w-full h-full">
               <img
-                className="absolute sky scale-[1.5] rotate-[-20deg] top-0 left-0 w-full h-full object-cover"
+                className="absolute sky top-0 left-0 w-full h-full object-cover transform scale-[1.2] sm:scale-[1.3] md:scale-[1.5] rotate-[-20deg]"
                 src="./sky.png"
-                alt="Background"
+                alt="Sky"
               />
               <img
-                className="absolute bg scale-[1.8] rotate-[-3deg] top-0 left-0 w-full h-full object-cover"
+                className="absolute bg top-0 left-0 w-full h-full object-cover transform scale-[1.5] sm:scale-[1.6] md:scale-[1.8] rotate-[-3deg]"
                 src="./bg.png"
                 alt="Background"
               />
-              <div className="text absolute flex flex-col gap-0 text-white top-7 left-1/2 -translate-x-1/2 ">
-                <h1 className="text-8xl leading-none -ml-8">grand</h1>
-                <h1 className="text-8xl leading-none ml-8">theft</h1>
-                <h1 className="text-8xl leading-none -ml-8">auto</h1>
+              <div className="text absolute top-34 sm:top-6 md:top-8 left-1/2 transform -translate-x-1/2 text-white text-center">
+                <h1 className="text-6xl sm:text-6xl md:text-8xl leading-none -ml-4 sm:-ml-6 md:-ml-8">grand</h1>
+                <h1 className="text-6xl sm:text-6xl md:text-8xl leading-none ml-4 sm:ml-6 md:ml-8">theft</h1>
+                <h1 className="text-6xl sm:text-6xl md:text-8xl leading-none -ml-4 sm:-ml-6 md:-ml-8">auto</h1>
               </div>
               <img
+                className="absolute mb-[200px] sm:mb-0 character left-1/2 transform -translate-x-1/2 bottom-[-200%] sm:bottom-[-220%] md:bottom-[-250%] scale-[1.8] sm:scale-[2.2] md:scale-[2.7] rotate-[-20deg]"
                 src="./girlbg.png"
-                className="absolute character -bottom-[250%] left-1/2 -translate-x-1/2 scale-[2.7] rotate-[-20deg] "
+                alt="Character"
               />
             </div>
-            <div className="btmbar absolute text-white bottom-0 left-0 w-full py-15 px-10 bg-gradient-to-t from-black to-transparent">
-              <div className="flex gap-4 items-center">
-                <i className="ri-arrow-down-line text-2xl"></i>
-                <h3 className="font-[Helvetica_Now_Display] text-xl">
-                  Scroll Down
-                </h3>
+
+            <div className="btmbar absolute bottom-0 left-0 w-full py-4 sm:py-6 md:py-8 px-4 sm:px-6 md:px-10 bg-gradient-to-t from-black to-transparent text-white flex items-center justify-between">
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                <i className="ri-arrow-down-line text-xl sm:text-2xl md:text-2xl"></i>
+                <h3 className="font-[Helvetica_Now_Display] text-sm sm:text-lg md:text-xl">Scroll Down</h3>
               </div>
 
               <img
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[45px]"
+                className="h-8 sm:h-12 md:h-14"
                 src="./ps5.png"
+                alt="PS5"
               />
             </div>
-          </div>
+          </section>
 
-          <div className="w-full h-screen flex items-center justify-center px-10 bg-black">
-            <div className="cntr flex items-center  text-white w-full h-[80%] ">
-              <div className="limg relative h-full w-2/3">
-                <img
-                  className="absolute scale-[1.1] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  "
-                  src="./imag.png"
-                />
-              </div>
-              <div className="rg w-[90%]">
-                <h1 className="text-5xl">Still Running,</h1>
-                <h1 className="text-5xl">Not Hunting</h1>
-                <p className="mt-10 font-[Helvetica_Now_Display] text-xl">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Cumque corrupti illo esse distinctio nihil, molestias modi
-                  consequatur. Tenetur molestias mollitia ad laborum iure
-                  architecto quo. Ratione odit voluptatum et suscipit?
-                </p>
-                <p className="mt-7 font-[Helvetica_Now_Display] text-xl">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Cumque corrupti illo esse distinctio nihil, molestias modi
-                  consequatur. Tenetur molestias mollitia ad laborum iure
-                  architecto quo. Ratione odit voluptatum et suscipit?
-                </p>
-                <button className="bg-yellow-500 mt-6 px-3 py-3 text-black text-xl">Download Now</button>
-              </div>
+          {/* Content Section */}
+          <section className="w-full h-screen flex flex-col md:flex-row items-center justify-center bg-black px-4 sm:px-6 md:px-10">
+            <div className="limg w-full md:w-2/3 h-1/2 md:h-full relative mb-6 md:mb-0">
+              <img
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 scale-[1] sm:scale-[1.05] md:scale-[1.1]"
+                src="./imag.png"
+                alt="Image"
+              />
             </div>
-          </div>
+            <div className="rg w-full md:w-[90%] text-white text-center md:text-left">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl">Still Running,</h1>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl">Not Hunting</h1>
+              <p className="mt-6 sm:mt-8 md:mt-10 font-[Helvetica_Now_Display] text-sm sm:text-base md:text-xl">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+                corrupti illo esse distinctio nihil, molestias modi consequatur.
+                Tenetur molestias mollitia ad laborum iure architecto quo.
+                Ratione odit voluptatum et suscipit?
+              </p>
+              <p className="mt-4 sm:mt-6 md:mt-7 font-[Helvetica_Now_Display] text-sm sm:text-base md:text-xl">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+                corrupti illo esse distinctio nihil, molestias modi consequatur.
+                Tenetur molestias mollitia ad laborum iure architecto quo.
+                Ratione odit voluptatum et suscipit?
+              </p>
+              <button className="bg-yellow-500 mt-4 sm:mt-6 md:mt-8 px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-3 text-black text-sm sm:text-base md:text-xl rounded">
+                Download Now
+              </button>
+            </div>
+          </section>
         </div>
       )}
     </>
