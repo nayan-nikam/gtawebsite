@@ -10,14 +10,14 @@ function App() {
     const tl = gsap.timeline();
 
     tl.to(".vi-mask-group", {
-      rotate: 10,
+      rotate: 0,
       duration: 2,
       ease: "Power4.easeInOut",
       transformOrigin: "50% 50%",
     }).to(".vi-mask-group", {
       scale: 10,
-      duration: 2,
-      delay: -1.8,
+      duration: 4,
+      delay: 1,
       ease: "Expo.easeInOut",
       transformOrigin: "50% 50%",
       opacity: 0,
@@ -37,8 +37,8 @@ function App() {
     gsap.to(".main", {
       rotate: 0,
       scale: 1,
-      duration: 2,
-      delay: -1,
+      duration: 7,
+      delay: 1,
       ease: "Expo.easeInOut",
     });
 
@@ -46,7 +46,7 @@ function App() {
       rotate: 0,
       scale: 1.2,
       duration: 2,
-      delay: -0.8,
+      delay: 1,
       ease: "Expo.easeInOut",
     });
 
@@ -54,7 +54,7 @@ function App() {
       rotate: 0,
       scale: 1.2,
       duration: 2,
-      delay: -0.8,
+      delay: 1,
       ease: "Expo.easeInOut",
     });
 
@@ -142,7 +142,7 @@ function App() {
                 <h1 className="text-6xl sm:text-6xl md:text-8xl leading-none -ml-4 sm:-ml-6 md:-ml-8">auto</h1>
               </div>
               <img
-                className="absolute mb-[465px] sm:mb-0 character left-1/2 transform -translate-x-1/2 bottom-[-200%] sm:bottom-[-220%] md:bottom-[-250%] scale-[1.8] sm:scale-[2.2] md:scale-[2.7] rotate-[-20deg]"
+                className="absolute mb-[4650px] sm:mb-0 character left-1/2 transform -translate-x-1/2 bottom-[-200%] sm:bottom-[-220%] md:bottom-[-250%] scale-[1.8] sm:scale-[2.2] md:scale-[2.7] rotate-[-20deg]"
                 src="./girlbg.png"
                 alt="Character"
               />
